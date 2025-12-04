@@ -1,0 +1,11 @@
+AI Presentation Creator Pro
+Copyright (c) 2025 Osama Elemam
+
+This software uses the following open-source components:
+- llama-cpp-python
+- PyPDF2
+- python-pptx
+- Flask
+- scikit-learn
+
+Licensed under the Apache License, Version 2.0.
