@@ -1,3 +1,8 @@
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-Framework-black)
+![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)
+![Model](https://img.shields.io/badge/LLM-GGUF-orange)
+![Status](https://img.shields.io/badge/AI-Powered-purple)
 🚀 AI Presentation Creator Pro
 Local LLM-Powered Academic PowerPoint Generator with PDF-Enhanced RAG
 
