@@ -122,17 +122,14 @@ Auto-generated additional slides for long content
 
 
 
-
-
-
-📜 License
+**📜 License**
 
   This project is licensed under the Apache License 2.0.
   Copyright (c) 2025 Osama Elemam
 
   "See the LICENSE file for details."
 
-🙌 Author
+**🙌 Author**
 
   Osama Elemam
   AI/ML Engineer & Software Developer
