@@ -1,4 +1,4 @@
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+<img width="1181" height="1600" alt="image" src="https://github.com/user-attachments/assets/09e4c246-559b-452f-bf42-9d66a9a8c119" />![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![Flask](https://img.shields.io/badge/Flask-Framework-black)
 ![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)
 ![Model](https://img.shields.io/badge/LLM-GGUF-orange)
@@ -113,6 +113,16 @@ Auto-generated additional slides for long content
 
 4. Open in your browser:
  http://127.0.0.1:5000
+
+
+
+<img width="1181" height="1600" alt="image" src="https://github.com/user-attachments/assets/0ebecd43-76e6-418e-b138-9c53275c1046" />
+
+
+
+
+
+
 
 
 📜 License
