@@ -164,10 +164,11 @@ class ContentGenerator:
             self.llm = Llama(
                 model_path=model_path,
                 n_ctx=4096,
-                n_gpu_layers=0,
+                n_gpu_layers=32,
                 temperature=0.25,
                 top_p=0.9,
-                verbose=False
+                verbose=False,
+                # repeat_penalty=1.25
             )
             # PDF index (RAG)
             self.pdf_chunks = []
@@ -237,7 +238,9 @@ class ContentGenerator:
         if self.pdf_vectorizer is None or self.pdf_tfidf is None or not self.pdf_chunks:
             return ""
 
-        query = f"{topic}. {slide_title}"
+        query = f"""Topic: {topic} Slide focus: {slide_title} 
+        Keywords to match: core concepts, definitions, examples, applications."""
+
         try:
             q_vec = self.pdf_vectorizer.transform([query])
             # cosine similarity for normalized tf-idf is just dot product
@@ -778,7 +781,7 @@ def create_app():
             slides_str = request.form.get('slides', '8')
             prompt_style = request.form.get('prompt_style', 'prompt1')
             use_pdf_flag = request.form.get('use_pdf', '0') == '1'
-
+            pdf_file = request.files.get('pdf_file')
             try:
                 slides = int(slides_str)
             except ValueError:
@@ -791,18 +794,21 @@ def create_app():
                 return jsonify({'error': 'Number of slides must be between 3 and 12'}), 400
 
             # PDF (اختياري + اختياري الاستخدام)
-            pdf_file = request.files.get('pdf')
+            
             if use_pdf_flag and pdf_file and pdf_file.filename:
+                print("📚 Using uploaded PDF for RAG")
                 tmp_pdf = tempfile.NamedTemporaryFile(suffix='.pdf', delete=False)
                 pdf_path = tmp_pdf.name
                 pdf_file.save(pdf_path)
                 tmp_pdf.close()
                 TEMP_FILES.append(pdf_path)
+
                 pdf_text = extract_text_from_pdf(pdf_path)
                 content_gen.set_pdf_from_text(pdf_text)
             else:
-                # لم يتم اختيار استخدام PDF أو لم يتم رفع ملف
                 content_gen.clear_pdf_index()
+                print("📚 PDF index cleared (no PDF / not used)")
+
 
             print(f"🎯 Starting generation: '{title}' ({slides} slides, {prompt_style}, use_pdf={use_pdf_flag})")
             start_time = time.time()
